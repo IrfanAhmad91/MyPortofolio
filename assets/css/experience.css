@@ -1,0 +1,157 @@
+/* =============================================
+   Experience Section - Horizontal Scroll Cards
+   Validates: Requirements 11.1, 11.5, 11.6, 11.7
+   ============================================= */
+
+/* Scroll container */
+.experience-scroll {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.experience-scroll:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+.experience-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Flex track */
+.experience-scroll__track {
+  display: flex;
+  gap: 24px;
+  padding: 1rem 0;
+}
+
+/* Card base styles */
+.experience-card {
+  flex: 0 0 calc((100% - 48px) / 3); /* 3 visible cards at ≥1024px */
+  scroll-snap-align: start;
+  min-width: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 300ms ease, border-color 300ms ease, border-image 300ms ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Card hover: translateY(-4px) + gradient border accent */
+.experience-card:hover {
+  transform: translateY(-4px);
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #ffd700, #f59e0b) 1;
+}
+
+/* Dot indicator */
+.experience-scroll__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 1rem 0;
+}
+
+.experience-scroll__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary, #666);
+  opacity: 0.4;
+  transition: opacity 300ms ease, background-color 300ms ease, transform 300ms ease;
+}
+
+.experience-scroll__dot--active {
+  opacity: 1;
+  background: var(--accent-gold, #ffd700);
+  transform: scale(1.3);
+}
+
+/* =============================================
+   Responsive: Tablet (768px - 1023px)
+   2 visible cards
+   ============================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .experience-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
+
+/* =============================================
+   Responsive: Mobile (<768px)
+   Stacked vertical layout, hide dot indicator
+   ============================================= */
+@media (max-width: 767px) {
+  .experience-scroll {
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  .experience-scroll__track {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .experience-card {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .experience-scroll__dots {
+    display: none;
+  }
+}
+
+/* =============================================
+   Reduced Motion: disable hover elevation transition
+   (Req 11.7 - apply state changes instantly)
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .experience-card {
+    transition: none;
+  }
+
+  .experience-scroll__dot {
+    transition: none;
+  }
+}
+
+/* =============================================
+   Experience Card Inner Elements
+   ============================================= */
+.experience-card__date {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent, #7c3aed);
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+.experience-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.experience-card__org {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent, #7c3aed);
+  margin-bottom: 0.5rem;
+}
+
+.experience-card__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}

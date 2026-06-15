@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Mesh Gradient Background
+   Replaces the canvas particle system with CSS-only animated gradients.
+   Colors: Navy (#1a1a2e), Purple (#7c3aed), Gold (#ffd700)
+   ========================================================================== */
+
+/* Static fallback on .hero ensures content is visible even if animation fails */
+.hero {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(26, 26, 46, 0.6) 0%, transparent 60%),
+    var(--bg-primary, #0a0a0f);
+}
+
+/* Animated mesh gradient layer */
+.hero__mesh-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(26, 26, 46, 0.8) 0%, transparent 60%);
+  background-size: 200% 200%;
+  animation: mesh-move 12s ease-in-out infinite;
+}
+
+/* Keyframe animation for mesh gradient movement (12s cycle) */
+@keyframes mesh-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Reduced motion: pause animation, show static gradient */
+@media (prefers-reduced-motion: reduce) {
+  .hero__mesh-gradient {
+    animation: none;
+    background-size: 100% 100%;
+  }
+}

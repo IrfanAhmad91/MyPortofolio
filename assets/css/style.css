@@ -1,0 +1,1393 @@
+/* ==========================================================================
+   Base Styles - Portfolio Redesign
+   ==========================================================================
+   Requirements: 4.1, 4.2, 4.3, 10.1, 10.5
+   
+   This file contains:
+   - CSS Reset
+   - Base typography
+   - Utility classes (container, grid, flexbox)
+   - Glassmorphism .glass-card component
+   - Section base styles
+   - Scroll reveal [data-reveal] animation foundations
+   - Hover transitions for interactive elements
+   - prefers-reduced-motion accessibility support
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   2. Base Typography
+   Req 10.2: Purple (#7c3aed) accent for headings underlines
+   -------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. Container Utility
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Grid & Flexbox Utilities
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex--between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex--column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex--wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   5. Glassmorphism - .glass-card Component
+   Req 4.1, 4.3: Themed backgrounds via CSS variables
+   Req 10.1: Hover transitions 200-500ms
+   -------------------------------------------------------------------------- */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Compact padding on very narrow screens */
+@media (max-width: 374px) {
+  .glass-card {
+    padding: 1.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Box Shadow Utility (updated with theme variables)
+   -------------------------------------------------------------------------- */
+.box-shadow-full {
+  padding: 3rem 1.25rem;
+  position: relative;
+  background-color: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  margin-bottom: 3rem;
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .box-shadow-full {
+    padding: 3rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Section Base Styles
+   -------------------------------------------------------------------------- */
+section {
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   8. Section Title with Purple Accent Underline
+   Req 10.2: Purple (#7c3aed) accent for headings underlines
+   -------------------------------------------------------------------------- */
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1rem;
+}
+
+.section-title__heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent-purple);
+  border-radius: 2px;
+}
+
+.section-title__subtitle {
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Scroll Reveal - [data-reveal] Animations
+   Req 8.1, 8.2: Fade-in and slide-up on scroll
+   -------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   10. Hover Transitions for Interactive Elements
+   Req 10.1: CSS transition 200-500ms on hover for clickable elements
+   -------------------------------------------------------------------------- */
+a {
+  transition: color 300ms ease, opacity 300ms ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+button {
+  transition: background-color 300ms ease, color 300ms ease, transform 200ms ease, box-shadow 300ms ease;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 300ms ease, color 300ms ease, transform 200ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+  border-color: transparent;
+  border-image: linear-gradient(135deg, #ffd700, #f59e0b) 1;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(245, 158, 11, 0.1));
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   11. Theme Transition Class
+   Req 5.2, 10.3: Smooth theme switching 300-500ms
+   -------------------------------------------------------------------------- */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: var(--theme-transition) !important;
+}
+
+/* --------------------------------------------------------------------------
+   12. prefers-reduced-motion - Disable ALL animations and transitions
+   Req 10.5: Disable all hover transitions, changes apply instantly
+   Req 8.5: Skip all scroll reveal animations
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .glass-card:hover {
+    transform: none;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar__link::after {
+    transition: none;
+  }
+
+  .navbar__theme-toggle:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. Utility Classes
+   -------------------------------------------------------------------------- */
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   14. Hero Section
+   Req 1.3, 2.1, 2.2, 2.5: Particle canvas hero, 100vh, white title
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero__gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--hero-bg-primary) 0%, var(--hero-bg-secondary) 50%, var(--hero-bg-primary) 100%);
+  z-index: 0;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #1a1a2e, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="light"] .hero__title {
+  background: linear-gradient(90deg, #ffd700, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__subtitle {
+  color: var(--accent);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 400;
+}
+
+/* Fallback text shown only when Typed.js fails to initialize */
+.typed-fallback {
+  display: none;
+}
+
+.typed:empty + .typed-fallback {
+  display: inline;
+}
+
+/* Hero CTA Button - Gradient border (gold-to-amber) */
+.hero__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0.875rem 2rem;
+  min-width: 44px;
+  min-height: 44px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  background-clip: padding-box;
+  transition: background 300ms ease, color 300ms ease, transform 200ms ease, box-shadow 300ms ease;
+}
+
+/* Gradient border via pseudo-element */
+.hero__cta::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(135deg, #ffd700, #f59e0b);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.hero__cta:hover {
+  background: linear-gradient(135deg, #ffd700, #f59e0b);
+  color: #0a0a0f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.hero__cta:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* Light mode CTA */
+[data-theme="light"] .hero__cta {
+  color: #1a1a2e;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .hero__cta:hover {
+  color: #0a0a0f;
+  background: linear-gradient(135deg, #ffd700, #f59e0b);
+}
+
+/* Reduced motion for CTA */
+@media (prefers-reduced-motion: reduce) {
+  .hero__cta {
+    transition: none;
+  }
+
+  .hero__cta:hover {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. Navbar Component
+   Req 3.1, 3.4, 5.1, 9.5: Fixed navbar, glassmorphism on scroll,
+   theme toggle, responsive hamburger menu
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  padding: 1rem 0;
+  transition: background-color 300ms ease, backdrop-filter 300ms ease, border-color 300ms ease;
+}
+
+/* Glassmorphism state - applied via JS after 100px scroll (task 3.2) */
+.navbar--scrolled {
+  background: var(--navbar-glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--navbar-glass-border);
+}
+
+/* Light mode: force white text when navbar is transparent over dark hero */
+[data-theme="light"] .navbar:not(.navbar--scrolled) .navbar__logo,
+[data-theme="light"] .navbar:not(.navbar--scrolled) .navbar__link,
+[data-theme="light"] .navbar:not(.navbar--scrolled) .navbar__theme-toggle,
+[data-theme="light"] .navbar:not(.navbar--scrolled) .navbar__mobile-toggle {
+  color: #ffffff;
+}
+
+[data-theme="light"] .navbar:not(.navbar--scrolled) .navbar__link--active {
+  color: #ffffff;
+}
+
+[data-theme="light"] .navbar:not(.navbar--scrolled) .navbar__theme-toggle {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color 300ms ease;
+}
+
+.navbar__logo:hover {
+  color: var(--accent);
+}
+
+.navbar__logo:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* Desktop navigation */
+.navbar__nav {
+  display: none;
+}
+
+.navbar__list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar__link {
+  position: relative;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  transition: color 300ms ease;
+}
+
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #ffd700, #f59e0b);
+  border-radius: 1px;
+  transition: width 250ms ease;
+}
+
+.navbar__link:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+.navbar__link:hover {
+  color: var(--text-primary);
+}
+
+.navbar__link:hover::after {
+  width: 80%;
+}
+
+.navbar__link--active {
+  color: var(--text-primary);
+}
+
+.navbar__link--active::after {
+  width: 80%;
+}
+
+/* Theme toggle button - Req 5.1: 44×44px touch target, aria-label */
+.navbar__theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, transform 200ms ease;
+}
+
+.navbar__theme-toggle:hover {
+  background: var(--glass-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+.navbar__theme-toggle:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* Mobile toggle button - visible below 768px */
+.navbar__mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 8px;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  transition: color 300ms ease;
+}
+
+.navbar__mobile-toggle:hover {
+  color: var(--accent);
+}
+
+.navbar__mobile-toggle:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* Mobile navigation - open state */
+.navbar__nav--open {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--navbar-glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--navbar-glass-border);
+  padding: 1rem 0;
+}
+
+.navbar__nav--open .navbar__list {
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.navbar__nav--open .navbar__item {
+  width: 100%;
+  text-align: center;
+}
+
+.navbar__nav--open .navbar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+  font-size: 1.05rem;
+}
+
+/* --------------------------------------------------------------------------
+   15b. Navbar Responsive - Desktop (≥992px)
+   Req 9.6: Mobile nav toggle visible below 992px, inline nav at ≥992px
+   -------------------------------------------------------------------------- */
+@media (min-width: 992px) {
+  .navbar__nav {
+    display: block;
+  }
+
+  .navbar__mobile-toggle {
+    display: none;
+  }
+
+  .navbar__nav--open {
+    position: static;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .navbar__nav--open .navbar__list {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .navbar__nav--open .navbar__link {
+    display: inline;
+    padding: 0.25rem 0;
+    font-size: 0.95rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   16. About Section
+   Req 1.4, 1.5, 11.1, 11.2, 11.3, 11.4, 11.5:
+   Glass-card styling, CSS icon placeholder (no photos), BEM naming
+   -------------------------------------------------------------------------- */
+.about {
+  padding: 5rem 0;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Profile card with CSS icon placeholder */
+.about__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.about__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), rgba(255, 215, 0, 0.3));
+  border: 3px solid var(--accent);
+  box-shadow: 0 4px 24px rgba(255, 215, 0, 0.2);
+}
+
+.about__icon {
+  font-size: 3rem;
+  color: var(--bg-primary);
+}
+
+.about__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.about__info-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about__info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  flex-wrap: wrap;
+}
+
+.about__info-icon {
+  color: var(--accent);
+  font-size: 1rem;
+  min-width: 20px;
+}
+
+.about__info-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.about__info-value {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: auto;
+  word-break: break-word;
+}
+
+/* Summary card */
+.about__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Counter stats in profile card */
+.about__counters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.about__counter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.about__counter-item .counter {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.about__counter-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.about__summary-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.about__summary-title i {
+  color: var(--accent);
+}
+
+.about__text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   17. Experience Section - Vertical Timeline
+   Req 6.1, 6.2, 6.3, 6.4, 6.5, 6.6:
+   Vertical timeline, alternating left/right, glassmorphism cards,
+   scroll reveal, hover effects, responsive single-column on mobile
+   -------------------------------------------------------------------------- */
+.experience-section {
+  padding: 5rem 0;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Vertical center line */
+.timeline__line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-purple), var(--glass-border));
+  border-radius: 2px;
+}
+
+/* Timeline item base */
+.timeline__item {
+  position: relative;
+  width: 50%;
+  padding: 1.5rem;
+}
+
+/* Timeline node marker (circle on the line) */
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  z-index: 2;
+}
+
+/* Left-aligned items */
+.timeline__item--left {
+  left: 0;
+  padding-right: 3rem;
+}
+
+.timeline__item--left::before {
+  right: -7px;
+}
+
+/* Right-aligned items */
+.timeline__item--right {
+  left: 50%;
+  padding-left: 3rem;
+}
+
+.timeline__item--right::before {
+  left: -7px;
+}
+
+/* Timeline card styling */
+.timeline__card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.timeline__card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Date badge */
+.timeline__date {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+/* Title */
+.timeline__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+/* Organization */
+.timeline__org {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+/* Description */
+.timeline__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   17a. Timeline Scroll Animation States
+   Req 6.4, 8.1, 8.2, 8.3: Intersection Observer reveal with stagger
+   Initial state: opacity 0, translateY(40px)
+   Revealed state: opacity 1, translateY(0), 600ms ease-out
+   -------------------------------------------------------------------------- */
+.timeline__item[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.timeline__item[data-reveal].timeline__item--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline__item[data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .timeline__card {
+    transition: none;
+  }
+
+  .timeline__card:hover {
+    transform: none;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17b. Timeline Responsive - Mobile (< 768px)
+   Req 6.6, 9.3: Single-column layout, timeline line on the left
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .timeline__line {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline__item {
+    width: 100%;
+    padding-left: 3.5rem;
+    padding-right: 1rem;
+  }
+
+  .timeline__item--left,
+  .timeline__item--right {
+    left: 0;
+    padding-left: 3.5rem;
+    padding-right: 1rem;
+  }
+
+  .timeline__item::before {
+    left: 13px;
+    right: auto;
+  }
+
+  .timeline__item--left::before {
+    right: auto;
+    left: 13px;
+  }
+
+  .timeline__item--right::before {
+    left: 13px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   18. Skills Section
+   Req 7.1, 7.2, 7.4: Animated progress bars, skill categories,
+   text labels with visual proficiency indicators
+   -------------------------------------------------------------------------- */
+.skills-section {
+  padding: 5rem 0;
+}
+
+/* Skills grid - 2 columns on desktop, 1 on mobile */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Skill category card */
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.skill-category__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Individual skill bar container */
+.skill-bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.25rem 0.75rem;
+  align-items: center;
+}
+
+.skill-bar__label {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.skill-bar__percent {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-align: right;
+}
+
+.skill-bar__track {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  width: 100%;
+  height: 8px;
+  background: rgba(10, 25, 47, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+/* Dark theme track uses navy, light theme uses a subtle dark */
+[data-theme="light"] .skill-bar__track {
+  background: rgba(10, 25, 47, 0.15);
+}
+
+/* Progress bar fill - Gold accent */
+.skill-bar__fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), rgba(255, 215, 0, 0.7));
+  border-radius: 4px;
+  transition: width 1000ms ease-out;
+}
+
+.skill-bar__fill.animate {
+  width: var(--skill-level);
+}
+
+/* --------------------------------------------------------------------------
+   18a. Skills Section - Scroll Reveal States
+   -------------------------------------------------------------------------- */
+.skill-category[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.skill-category[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   18b. Skills Section - Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .skill-bar__fill {
+    width: var(--skill-level);
+    transition: none;
+  }
+
+  .skill-category[data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   19. Footer Section – Minimal Bold Layout
+   Req 12.1, 12.2, 12.3, 12.4, 12.5, 12.6:
+   CTA heading + mailto link, bottom row with name & social icons,
+   44×44px touch targets, aria-labels, external links new tab,
+   visible top border for section boundary
+   -------------------------------------------------------------------------- */
+.footer {
+  margin-top: 2rem;
+  padding: 4rem 1.5rem 2rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+/* CTA section – full width */
+.footer__cta {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.footer__cta-heading {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.footer__cta-email {
+  display: inline-block;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 300ms ease, border-color 300ms ease;
+  word-break: break-all;
+  max-width: 100%;
+}
+
+.footer__cta-email:hover,
+.footer__cta-email:focus-visible {
+  color: #ffd700;
+  border-bottom-color: #ffd700;
+}
+
+.footer__cta-email:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* Bottom row – name left, social right */
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Social icon row */
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Individual social link – 44×44px min touch target */
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  background: var(--glass-bg);
+  transition: color 300ms ease, border-color 300ms ease, transform 200ms ease, box-shadow 300ms ease, background-color 300ms ease;
+}
+
+.footer__social-link:hover {
+  color: #ffd700;
+  border-color: transparent;
+  background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+              linear-gradient(135deg, #ffd700, #f59e0b) border-box;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.2);
+}
+
+/* Focus visible for keyboard navigation */
+.footer__social-link:focus-visible {
+  outline: 2px solid var(--focus-outline-color, #ffd700);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   19a. Footer - Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .footer__social-link {
+    transition: none;
+  }
+
+  .footer__social-link:hover {
+    transform: none;
+  }
+
+  .footer__cta-email {
+    transition: none;
+  }
+}

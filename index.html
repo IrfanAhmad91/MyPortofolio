@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Irfan Ahmad Thahir - Portfolio</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Theme initialization (FOUC prevention - must run before any CSS) -->
+  <script>
+    (function() {
+      var STORAGE_KEY = 'portfolio-theme';
+      var DEFAULT_THEME = 'dark';
+      var theme = DEFAULT_THEME;
+      try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'dark' || saved === 'light') {
+          theme = saved;
+        }
+      } catch (e) {
+        // localStorage unavailable (private browsing) - use default
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Google Fonts: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link href="assets/img/icon.png" rel="icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/themes.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/bento.css" rel="stylesheet">
+  <link href="assets/css/mesh-gradient.css" rel="stylesheet">
+  <link href="assets/css/interactions.css" rel="stylesheet">
+  <link href="assets/css/experience.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="navbar">
+    <div class="container navbar__container">
+      <a href="#hero" class="navbar__logo">I</a>
+      <nav class="navbar__nav" id="navbar-nav">
+        <ul class="navbar__list">
+          <li class="navbar__item"><a class="navbar__link magnetic-btn navbar__link--active" href="#hero">Home</a></li>
+          <li class="navbar__item"><a class="navbar__link magnetic-btn" href="#about">About</a></li>
+          <li class="navbar__item"><a class="navbar__link magnetic-btn" href="#experience">Experience</a></li>
+          <li class="navbar__item"><a class="navbar__link magnetic-btn" href="#skills">Skills</a></li>
+          <li class="navbar__item"><a class="navbar__link magnetic-btn" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="navbar__theme-toggle" aria-label="Switch to light mode" id="theme-toggle">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+      <button class="navbar__mobile-toggle" aria-label="Toggle navigation menu" id="mobile-nav-toggle">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <main id="main">
+  <section id="hero" class="hero">
+    <div class="hero__mesh-gradient" aria-hidden="true"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Irfan Ahmad Thahir</h1>
+      <p class="hero__subtitle">
+        <span class="typed" data-typed-items="IT Support Specialist,Web Developer,Back-End Developer"></span>
+        <span class="typed-fallback">IT Support Specialist | Full Stack Web Developer | Back-End Developer</span>
+      </p>
+      <button class="hero__cta magnetic-btn" type="button">View My Work</button>
+    </div>
+  </section><!-- End Hero Section -->
+
+    <!-- ======= About & Skills Bento Grid Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title" data-reveal>
+          <h2 class="section-title__heading">About</h2>
+        </div>
+
+        <div class="bento-grid" id="skills">
+          <!-- Profile Card (Large: 2×2) -->
+          <div class="bento-grid__item--large glass-card" data-reveal>
+            <div class="about__icon-wrapper">
+              <i class="fas fa-user-graduate about__icon" aria-hidden="true"></i>
+            </div>
+            <h3 class="about__name">Irfan Ahmad Thahir</h3>
+            <ul class="about__info-list">
+              <li class="about__info-item">
+                <i class="fas fa-book about__info-icon" aria-hidden="true"></i>
+                <span class="about__info-label">Program Studi:</span>
+                <span class="about__info-value">Sistem Informasi</span>
+              </li>
+              <li class="about__info-item">
+                <i class="fas fa-university about__info-icon" aria-hidden="true"></i>
+                <span class="about__info-label">Universitas:</span>
+                <span class="about__info-value">Universitas Pamulang</span>
+              </li>
+            </ul>
+            <div class="about__counters">
+              <div class="about__counter-item">
+                <span class="counter" data-counter="4" data-suffix="+">0</span>
+                <span class="about__counter-label">Years Experience</span>
+              </div>
+              <div class="about__counter-item">
+                <span class="counter" data-counter="7">0</span>
+                <span class="about__counter-label">Projects</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Me Card (Medium: 2×1) -->
+          <div class="bento-grid__item--medium glass-card" data-reveal>
+            <h3 class="about__summary-title">
+              <i class="fas fa-info-circle" aria-hidden="true"></i>
+              About Me
+            </h3>
+            <p class="about__text" data-text-reveal>
+              Professional Full-Stack Developer dengan spesialisasi dalam arsitektur sistem dan
+manajemen database. Berpengalaman dalam merancang API yang terintegrasi dan
+aman, serta memiliki minat mendalam pada implementasi Artificial Intelligence untuk
+otomatisasi proses bisnis. Seorang problem solver yang adaptif, mampu bekerja secara
+mandiri maupun tim, dan berkomitmen untuk memberikan solusi teknologi berkualitas
+tinggi yang mendukung pertumbuhan perusahaan.
+            </p>
+          </div>
+
+          <!-- Skill Category: Programming Languages (Small: 1×1) -->
+          <div class="bento-grid__item--small glass-card skill-category" data-reveal>
+            <h3 class="skill-category__title">Programming Languages</h3>
+
+            <div class="skill-bar" data-skill="PHP" data-level="95">
+              <div class="skill-bar__label">PHP</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 95%"></div>
+              </div>
+              <span class="skill-bar__percent">95%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="HTML/CSS" data-level="90">
+              <div class="skill-bar__label">HTML/CSS</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 90%"></div>
+              </div>
+              <span class="skill-bar__percent">90%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="JavaScript" data-level="75">
+              <div class="skill-bar__label">JavaScript</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 75%"></div>
+              </div>
+              <span class="skill-bar__percent">75%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="SQL" data-level="70">
+              <div class="skill-bar__label">SQL</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 70%"></div>
+              </div>
+              <span class="skill-bar__percent">70%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="Python" data-level="65">
+              <div class="skill-bar__label">Python</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 65%"></div>
+              </div>
+              <span class="skill-bar__percent">65%</span>
+            </div>
+          </div>
+
+          <!-- Skill Category: Frameworks (Small: 1×1) -->
+          <div class="bento-grid__item--small glass-card skill-category" data-reveal>
+            <h3 class="skill-category__title">Frameworks</h3>
+
+            <div class="skill-bar" data-skill="Laravel" data-level="95">
+              <div class="skill-bar__label">Laravel</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 95%"></div>
+              </div>
+              <span class="skill-bar__percent">95%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="CodeIgniter" data-level="80">
+              <div class="skill-bar__label">CodeIgniter</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 80%"></div>
+              </div>
+              <span class="skill-bar__percent">80%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="Bootstrap" data-level="75">
+              <div class="skill-bar__label">Bootstrap</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 75%"></div>
+              </div>
+              <span class="skill-bar__percent">75%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="React" data-level="70">
+              <div class="skill-bar__label">React</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 70%"></div>
+              </div>
+              <span class="skill-bar__percent">70%</span>
+            </div>
+          </div>
+
+          <!-- Skill Category: Tools (Small: 1×1) -->
+          <div class="bento-grid__item--small glass-card skill-category" data-reveal>
+            <h3 class="skill-category__title">Tools</h3>
+
+            <div class="skill-bar" data-skill="VS Code" data-level="85">
+              <div class="skill-bar__label">VS Code</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 85%"></div>
+              </div>
+              <span class="skill-bar__percent">85%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="XAMPP" data-level="85">
+              <div class="skill-bar__label">XAMPP</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 85%"></div>
+              </div>
+              <span class="skill-bar__percent">85%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="Git" data-level="75">
+              <div class="skill-bar__label">Git</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 75%"></div>
+              </div>
+              <span class="skill-bar__percent">75%</span>
+            </div>
+          </div>
+
+          <!-- Skill Category: Networking (Small: 1×1) -->
+          <div class="bento-grid__item--small glass-card skill-category" data-reveal>
+            <h3 class="skill-category__title">Networking</h3>
+
+            <div class="skill-bar" data-skill="Troubleshooting" data-level="90">
+              <div class="skill-bar__label">Troubleshooting</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 90%"></div>
+              </div>
+              <span class="skill-bar__percent">90%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="LAN/WAN" data-level="85">
+              <div class="skill-bar__label">LAN</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 85%"></div>
+              </div>
+              <span class="skill-bar__percent">85%</span>
+            </div>
+
+            <div class="skill-bar" data-skill="TCP/IP" data-level="75">
+              <div class="skill-bar__label">TCP/IP</div>
+              <div class="skill-bar__track">
+                <div class="skill-bar__fill" style="--skill-level: 75%"></div>
+              </div>
+              <span class="skill-bar__percent">75%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About & Skills Bento Grid Section -->
+
+    <!-- ======= Experience Section ======= -->
+    <section id="experience" class="experience-section">
+      <div class="container">
+        <div class="section-title" data-reveal>
+          <h2 class="section-title__heading">Experience</h2>
+        </div>
+
+        <div class="experience-scroll" role="region" aria-label="Experience card carousel" tabindex="0">
+          <div class="experience-scroll__track">
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">2021 - Present</span>
+              <h3 class="experience-card__title">IT Support Specialist (Freelance)</h3>
+              <p class="experience-card__org"></p>
+              <p class="experience-card__desc">Menangani troubleshooting hardware & software, manajemen jaringan LAN, serta maintenance sistem IT perusahaan secara berkala.</p>
+            </article>
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">Internship</span>
+              <h3 class="experience-card__title">IT & E-Learning Support</h3>
+              <p class="experience-card__org">PPSDMPU (Internship)</p>
+              <p class="experience-card__desc">Mengembangkan sistem SISDIK untuk mendukung proses e-learning dan manajemen data pendidikan internal.</p>
+            </article>
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">Mar 2025 - Feb 2026</span>
+              <h3 class="experience-card__title">Back-End Developer (Freelance)</h3>
+              <p class="experience-card__org">Project Ngiderin.com</p>
+              <p class="experience-card__desc">Membangun RESTful API back-end untuk platform pariwisata, menangani autentikasi, manajemen data destinasi, dan integrasi layanan.</p>
+            </article>
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">Aug 2025 - Oct 2025</span>
+              <h3 class="experience-card__title">Web Developer (Freelance)</h3>
+              <p class="experience-card__org">Project Web Perpustakaan Digital</p>
+              <p class="experience-card__desc">Mengembangkan website perpustakaan digital untuk pengelolaan katalog buku, peminjaman, dan pengembalian secara online.</p>
+            </article>
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">Jun 2025 - Sep 2025</span>
+              <h3 class="experience-card__title">Web Developer (Freelance)</h3>
+              <p class="experience-card__org">Project Web Penggajian dan Presensi Karyawan</p>
+              <p class="experience-card__desc">Membangun sistem web untuk manajemen penggajian dan presensi karyawan dengan fitur rekap otomatis dan laporan bulanan.</p>
+            </article>
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">Mar 2025 - May 2025</span>
+              <h3 class="experience-card__title">Web Developer (Freelance)</h3>
+              <p class="experience-card__org">Project Web Penggajian Guru Honorer - SMKS Pembangunan Karya Jambe</p>
+              <p class="experience-card__desc">Mengembangkan sistem penggajian untuk guru honorer, mencakup perhitungan otomatis, slip gaji, dan laporan keuangan.</p>
+            </article>
+            <article class="experience-card glass-card" data-reveal>
+              <span class="experience-card__date">Jun 2023 - Aug 2023</span>
+              <h3 class="experience-card__title">Website Developer (Magang)</h3>
+              <p class="experience-card__org">MIS Nurul Falah Muncul</p>
+              <p class="experience-card__desc">Membangun website PPDB (Penerimaan Peserta Didik Baru) untuk memudahkan proses pendaftaran siswa baru secara online.</p>
+            </article>
+          </div>
+        </div>
+        <div class="experience-scroll__dots" aria-hidden="true">
+          <span class="experience-scroll__dot experience-scroll__dot--active"></span>
+          <span class="experience-scroll__dot"></span>
+          <span class="experience-scroll__dot"></span>
+          <span class="experience-scroll__dot"></span>
+          <span class="experience-scroll__dot"></span>
+          <span class="experience-scroll__dot"></span>
+          <span class="experience-scroll__dot"></span>
+        </div>
+      </div>
+    </section><!-- End Experience Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer__cta">
+        <h2 class="footer__cta-heading">Let's work together</h2>
+        <a href="mailto:irfanahmad.ia7219@gmail.com" class="footer__cta-email">
+          irfanahmad.ia7219@gmail.com
+        </a>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__name">Irfan Ahmad Thahir</span>
+        <div class="footer__social">
+          <a href="https://www.instagram.com/server404unknown/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer__social-link">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:irfanahmad.ia7219@gmail.com" aria-label="Email" class="footer__social-link">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+
+  <!-- Application JS Modules -->
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/mesh-gradient.js"></script>
+  <script src="assets/js/tilt-effect.js"></script>
+  <script src="assets/js/magnetic-button.js"></script>
+  <script src="assets/js/cursor-follower.js"></script>
+  <script src="assets/js/text-reveal.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/experience-scroll.js"></script>
+  <script src="assets/js/scroll-reveal.js"></script>
+  <script src="assets/js/skills.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

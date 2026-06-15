@@ -1,0 +1,65 @@
+/* ============================================
+   interactions.css
+   Styles for cursor follower, tilt perspective,
+   and magnetic button transforms
+   ============================================ */
+
+/* ----- Cursor Follower ----- */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent, #7c3aed);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 150ms ease, opacity 150ms ease, width 150ms ease, height 150ms ease;
+  will-change: transform, opacity, width, height;
+}
+
+.cursor-follower--hover {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+}
+
+/* Hide cursor follower on touch devices */
+@media (pointer: coarse) {
+  .cursor-follower {
+    display: none;
+  }
+}
+
+/* ----- Hero Content Tilt Perspective ----- */
+.hero__content {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 400ms ease-out;
+}
+
+/* ----- Magnetic Button Base Transition ----- */
+.magnetic-btn {
+  transition: transform 300ms ease-out;
+}
+
+/* ----- Reduced Motion Overrides ----- */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-follower {
+    display: none;
+  }
+
+  .hero__content {
+    transform: none !important;
+    perspective: none;
+    transition: none;
+  }
+
+  .magnetic-btn {
+    transform: none !important;
+    transition: none;
+  }
+}

@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Bento Grid Layout
+   Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5
+   ========================================================================== */
+
+/* --- Mobile-first: single-column stacked layout (<768px) --- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 16px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* All item sizes collapse to full width on mobile */
+.bento-grid__item--large,
+.bento-grid__item--medium,
+.bento-grid__item--small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* --- Tablet: 2-column layout (768px–1023px) --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Large and medium cards span full width (2 columns) */
+  .bento-grid__item--large,
+  .bento-grid__item--medium {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  /* Small cards remain 1 column */
+  .bento-grid__item--small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+/* --- Desktop: 4-column layout (≥1024px) --- */
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bento-grid__item--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .bento-grid__item--medium {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .bento-grid__item--small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
