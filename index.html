@@ -112,10 +112,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scale(2.2);          /* Zoom foto 2.2x lipat secara presisi */
-    transform-origin: 50% 18%;       /* Tentukan titik fokus zoom (50% tengah, 18% fokus wajah/atas) */
+    object-position: center 0%;   /* Menarik gambar ke bawah agar kepala & wajah muncul */
+    transform: scale(1.6);         /* Zoom secukupnya biar pas dari kepala sampai dada */
+    transform-origin: center top; /* Titik acuan zoom tepat di atas (kepala) */
   ">
 </div>
+
 
 
   <!-- Nama & Detail (Dipastikan Masuk di Dalam Card) -->
